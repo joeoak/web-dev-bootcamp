@@ -28,8 +28,8 @@ My notes and project files for https://www.udemy.com/course/the-web-developer-bo
 
 ### JavaScript
 
-- [s19-todo-list](./projects/s19-todo-list.html)
-- [s26-score-keeper](./projects/s26-score-keeper.html)
+- [s19-todo-list](./02-js/projects/s19-todo-list.html)
+- [s26-score-keeper](./02-js/projects/s26-score-keeper.html)
 
 ### DOM
 
