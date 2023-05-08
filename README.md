@@ -16,7 +16,7 @@ My notes and project files for https://www.udemy.com/course/the-web-developer-bo
 
 ### HTML
 
-- [s5-forms-demo.html](./00-html/projects/s5-forms-demo.html)
+- [s5-forms-demo](./00-html/projects/s5-forms-demo.html)
 - [s5-marathon-registration](./00-html/projects/s5-marathon-registration.html)
 
 ### CSS
