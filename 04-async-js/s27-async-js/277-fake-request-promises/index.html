@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // a promise is an object representing the eventual completion or failure of an asynchronous operation
+      // a promise is an object on which you attach callbacks, instead of passing callbacks into a function
+
+      const fakeRequestPromise = (url) => {
+        return new Promise((resolve, reject) => {
+          const r = Math.floor(Math.random() * 2);
+          console.log(`r = ${r}`);
+          setTimeout(() => {
+            if (r === 0) {
+              reject(`Failed to get data from ${url}`);
+            } else {
+              resolve(`Data from ${url}`);
+            }
+          }, 500);
+        });
+      };
+
+      fakeRequestPromise("foo.com/page1")
+        .then((response) => {
+          console.log("Success");
+          console.log(response);
+          fakeRequestPromise("foo.com/page2")
+            .then((response) => {
+              console.log("Success");
+              console.log(response);
+              fakeRequestPromise("foo.com/page3")
+                .then((response) => {
+                  console.log("Success");
+                  console.log(response);
+                })
+                .catch((response) => {
+                  console.log("Error");
+                  console.log(response);
+                });
+            })
+            .catch((response) => {
+              console.log("Error");
+              console.log(response);
+            });
+        })
+        .catch((response) => {
+          console.log("Error");
+          console.log(response);
+        });
+    </script>
+  </body>
+</html>

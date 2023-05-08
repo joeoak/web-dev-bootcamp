@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // async functions always return a promise
+      // if the function returns a value, the promise will be resolved with that value
+      // if the function throws an exception, the promise will be rejected
+
+      async function asyncFunction() {
+        //   returns a promise
+      }
+
+      const asyncArrowFunction = async () => {
+        // also returns a promise
+      };
+
+      const foo = async () => {
+        // throw "Error"; // rejects promise
+        return "Foo"; // resolves promise
+      };
+
+      foo()
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      const login = async (username, password) => {
+        if (!username || !password) throw "No credentials";
+        if (password === "password123") return `Welcome ${username}`;
+        throw "Invalid password";
+      };
+
+      login("joeoak", "password123")
+        .then((msg) => {
+          console.log("Logged in");
+          console.log(msg);
+        })
+        .catch((err) => {
+          console.log("Error");
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

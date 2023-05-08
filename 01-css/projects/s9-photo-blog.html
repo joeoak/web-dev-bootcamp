@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 10px;
+        font-family: system-ui;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 6.4rem;
+        font-size: 2rem;
+        line-height: 1.5;
+        font-weight: 700;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6.4rem;
+        padding: 6.4rem;
+        padding-top: 0;
+      }
+
+      .frame {
+        overflow: hidden;
+      }
+
+      .frame:hover > img {
+        transform: scale(1.1);
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        transition: transform 300ms;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>Photo Blog</nav>
+    <div class="gallery">
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?abstract" alt="abstract" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?animal" alt="animal" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?architecture" alt="architecture" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?art" alt="art" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?illustration" alt="illustration" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?minimal" alt="minimal" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?photography" alt="photography" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?portrait" alt="portrait" /></div>
+      <div class="frame"><img src="https://source.unsplash.com/random/1080x1080/?wallpaper" alt="wallpaper" /></div>
+    </div>
+  </body>
+</html>

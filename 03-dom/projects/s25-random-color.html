@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1 id="colorHeading">rgb(255, 255, 255)</h1>
+    <button id="changeColorButton">Change color</button>
+
+    <script>
+      const el = {
+        colorHeading: document.querySelector('#colorHeading'),
+        changeColorButton: document.querySelector('#changeColorButton'),
+      };
+
+      const returnRandomRGB = () => {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+      };
+
+      el.changeColorButton.addEventListener('click', () => {
+        const randomColor = returnRandomRGB();
+        document.body.style.backgroundColor = randomColor;
+        el.colorHeading.innerHTML = randomColor;
+      });
+    </script>
+  </body>
+</html>

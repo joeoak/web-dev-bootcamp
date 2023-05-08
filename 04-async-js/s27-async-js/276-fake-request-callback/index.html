@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const fakeRequestCallback = (url, success, failure) => {
+        const r = Math.floor(Math.random() * 2);
+        console.log(`r = ${r}`);
+        setTimeout(() => {
+          if (r === 0) {
+            failure(`Failed to get data from ${url}`);
+          } else {
+            success(`Data from ${url}`);
+          }
+        }, 500);
+      };
+
+      // callback hell 👇
+      fakeRequestCallback(
+        "foo.com/page1",
+        (response) => {
+          console.log("Success");
+          console.log(response);
+          fakeRequestCallback(
+            "foo.com/page2",
+            (response) => {
+              console.log("Success");
+              console.log(response);
+              fakeRequestCallback(
+                "foo.com/page3",
+                (response) => {
+                  console.log("Success");
+                  console.log(response);
+                },
+                (err) => {
+                  console.log("Error");
+                  console.log(err);
+                }
+              );
+            },
+            (err) => {
+              console.log("Error");
+              console.log(err);
+            }
+          );
+        },
+        (err) => {
+          console.log("Error");
+          console.log(err);
+        }
+      );
+    </script>
+  </body>
+</html>

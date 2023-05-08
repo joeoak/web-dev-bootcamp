@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Forms Demo</h1>
+    <h2>Search Demo</h2>
+    <form action="https://www.reddit.com/search">
+      <input type="text" name="q" placeholder="Search Reddit" />
+      <button>Search</button>
+    </form>
+    <hr />
+    <h2>Validation demo</h2>
+    <form action="/dummy">
+      <div>
+        <label for="first">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" minlength="4" maxlength="24" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+      </div>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

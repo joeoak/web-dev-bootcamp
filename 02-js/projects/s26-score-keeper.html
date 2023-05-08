@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: system-ui;
+        font-size: 16px;
+      }
+      button,
+      input {
+        font-family: inherit;
+        font-size: inherit;
+      }
+      .loser {
+        color: red;
+      }
+      .winner {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>score-keeper</div>
+      <form>
+        <label name="goal-input">playing to:</label>
+        <input id="goal-input" min="1" step="1" type="number" value="4" />
+        <button id="start-game" type="submit">start game</button>
+        <button id="reset-game">reset game</button>
+      </form>
+      <hr />
+      <div>
+        <div>
+          player 1:
+          <button id="player-one-subtract">-</button>
+          <span id="player-one-score">0</span>
+          <button id="player-one-add">+</button>
+        </div>
+        <div>
+          player 2:
+          <button id="player-two-subtract">-</button>
+          <span id="player-two-score">0</span>
+          <button id="player-two-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let game = {
+        state: String,
+        goal: Number,
+        score: {
+          playerOne: Number,
+          playerTwo: Number,
+        },
+        winner: Element,
+      };
+
+      const elements = {
+        goalInput: document.querySelector('#goal-input'),
+        playerOneAdd: document.querySelector('#player-one-add'),
+        playerOneScore: document.querySelector('#player-one-score'),
+        playerOneSubtract: document.querySelector('#player-one-subtract'),
+        playerTwoAdd: document.querySelector('#player-two-add'),
+        playerTwoScore: document.querySelector('#player-two-score'),
+        playerTwoSubtract: document.querySelector('#player-two-subtract'),
+        resetGame: document.querySelector('#reset-game'),
+        startGame: document.querySelector('#start-game'),
+      };
+
+      window.onload = () => {
+        resetGame();
+      };
+
+      const checkScore = (score, player) => {
+        if (score >= game.goal) {
+          game.winner = player;
+          endGame();
+        }
+        updateBoard();
+      };
+
+      const endGame = () => {
+        game.state = 'game over';
+        updateBoard();
+      };
+
+      const isInt = (n) => n % 1 === 0;
+
+      const resetGame = () => {
+        game.state = 'game start';
+        game.goal = 4;
+        game.score.playerOne = 0;
+        game.score.playerTwo = 0;
+        updateBoard();
+      };
+
+      const startGame = () => {
+        game.state = 'playing';
+        game.goal = elements.goalInput.value;
+        updateBoard();
+      };
+
+      const updateBoard = () => {
+        elements.playerOneScore.textContent = game.score.playerOne;
+        elements.playerTwoScore.textContent = game.score.playerTwo;
+        if (game.state === 'game start') {
+          elements.playerOneScore.className = '';
+          elements.playerTwoScore.className = '';
+          elements.goalInput.disabled = false;
+          elements.playerOneAdd.disabled = true;
+          elements.playerOneSubtract.disabled = true;
+          elements.playerTwoAdd.disabled = true;
+          elements.playerTwoSubtract.disabled = true;
+          elements.resetGame.disabled = true;
+          elements.startGame.disabled = false;
+          elements.goalInput.value = game.goal;
+        }
+        if (game.state === 'playing') {
+          elements.goalInput.disabled = true;
+          elements.playerOneAdd.disabled = false;
+          if (game.score.playerOne >= 1) {
+            elements.playerOneSubtract.disabled = false;
+          } else {
+            elements.playerOneSubtract.disabled = true;
+          }
+          elements.playerTwoAdd.disabled = false;
+          if (game.score.playerTwo >= 1) {
+            elements.playerTwoSubtract.disabled = false;
+          } else {
+            elements.playerTwoSubtract.disabled = true;
+          }
+          elements.resetGame.disabled = false;
+          elements.startGame.disabled = true;
+        }
+        if (game.state === 'game over') {
+          elements.goalInput.disabled = true;
+          elements.playerOneAdd.disabled = true;
+          elements.playerOneSubtract.disabled = true;
+          elements.playerTwoAdd.disabled = true;
+          elements.playerTwoSubtract.disabled = true;
+          elements.resetGame.disabled = false;
+          elements.startGame.disabled = true;
+          if (game.winner === 'playerOne') {
+            elements.playerOneScore.classList.add('winner');
+            elements.playerTwoScore.classList.add('loser');
+          }
+          if (game.winner === 'playerTwo') {
+            elements.playerOneScore.classList.add('loser');
+            elements.playerTwoScore.classList.add('winner');
+          }
+        }
+      };
+
+      elements.goalInput.addEventListener('input', (e) => {
+        if (isInt(parseFloat(e.target.value)) && parseFloat(e.target.value) >= 1) {
+          elements.startGame.disabled = false;
+        } else {
+          elements.startGame.disabled = true;
+        }
+      });
+
+      elements.playerOneAdd.addEventListener('click', () => {
+        game.score.playerOne += 1;
+        checkScore(game.score.playerOne, 'playerOne');
+      });
+
+      elements.playerOneSubtract.addEventListener('click', () => {
+        if (game.score.playerOne >= 1) game.score.playerOne -= 1;
+        updateBoard();
+      });
+
+      elements.playerTwoAdd.addEventListener('click', () => {
+        game.score.playerTwo += 1;
+        checkScore(game.score.playerTwo, 'playerTwo');
+      });
+
+      elements.playerTwoSubtract.addEventListener('click', () => {
+        if (game.score.playerTwo >= 1) game.score.playerTwo -= 1;
+        updateBoard();
+      });
+
+      elements.resetGame.addEventListener('click', resetGame);
+
+      elements.startGame.addEventListener('click', startGame);
+    </script>
+  </body>
+</html>

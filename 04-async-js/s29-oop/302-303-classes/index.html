@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Color {
+        constructor(obj) {
+          this.name = obj.name ? obj.name : "";
+          this.r = obj.r ? obj.r : 255;
+          this.g = obj.g ? obj.g : 255;
+          this.b = obj.b ? obj.b : 255;
+          this.a = obj.a ? obj.a : 1;
+        }
+        hex() {
+          function returnHex(n) {
+            let hex;
+            n < 1
+              ? (hex = Math.round(255 * n).toString(16))
+              : (hex = n.toString(16));
+            return hex.length === 1 ? "0" + hex : hex;
+          }
+          return (
+            "#" +
+            returnHex(this.r) +
+            returnHex(this.g) +
+            returnHex(this.b) +
+            (this.a < 1 ? returnHex(this.a) : "")
+          );
+        }
+        rgb() {
+          return this.a < 1
+            ? `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`
+            : `rgb(${this.r}, ${this.g}, ${this.b})`;
+        }
+        update(obj) {
+          this.name = obj.name ? obj.name : this.name;
+          this.r = obj.r ? obj.r : this.r;
+          this.g = obj.g ? obj.g : this.g;
+          this.b = obj.b ? obj.b : this.b;
+          this.a = obj.a ? obj.a : this.a;
+          console.log(this);
+        }
+      }
+
+      const c1 = new Color({ name: "c1", r: 11, g: 22, b: 33 });
+      const c2 = new Color({ name: "c2", r: 44, g: 55, b: 66, a: 0.77 });
+      const c3 = new Color({ a: 0.88 });
+    </script>
+  </body>
+</html>

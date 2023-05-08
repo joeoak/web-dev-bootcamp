@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: system-ui;
+        font-size: 10px;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .plans {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 128rem;
+        padding: 0.8rem;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
+
+      @media (min-width: 960px) {
+        .plans {
+          flex-direction: row;
+        }
+      }
+
+      .plan {
+        flex-grow: 1;
+        margin: 0.8rem;
+        padding: 3.6rem 4rem;
+        border-radius: 1.2rem;
+        background-color: white;
+      }
+
+      .plan h2 {
+        font-size: 2.4rem;
+      }
+
+      .pricing {
+        display: flex;
+        align-items: center;
+      }
+
+      .pricing .price {
+        margin: 1.2rem 0;
+        font-size: 3.2rem;
+      }
+
+      .pricing .price sup {
+        font-size: 1.6rem;
+      }
+
+      .pricing .rate {
+        margin-left: 0.8rem;
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .features {
+        margin-top: 1.2rem;
+      }
+
+      .features li {
+        padding: 1.2rem 0;
+        border-top: 1px solid #ccc;
+      }
+
+      .features li:last-child {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .cta {
+        display: block;
+        margin-top: 3.6rem;
+        padding: 1.2rem 1.6rem;
+        border: 1px solid #ccc;
+        border-radius: 0.8rem;
+        color: inherit;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: inherit;
+        transition: border-color 200ms, background-color 200ms;
+      }
+
+      .cta:hover {
+        border-color: #666;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="plans">
+        <div class="plan">
+          <h2>Free</h2>
+          <div class="pricing">
+            <div class="price"><sup class="currency">$</sup>0</div>
+            <div class="rate">per year<br />forever</div>
+          </div>
+          <ul class="features">
+            <li>2,000 CI/CD minutes/month</li>
+            <li>500MB of Packages storage</li>
+          </ul>
+          <a class="cta" href="#">Continue with Free</a>
+        </div>
+        <div class="plan">
+          <h2>Team</h2>
+          <div class="pricing">
+            <div class="price"><sup class="currency">$</sup>40</div>
+            <div class="rate">per user/year<br />for the first 12 months*</div>
+          </div>
+          <ul class="features">
+            <li>3,000 CI/CD minutes/month</li>
+            <li>2GB of Packages storage</li>
+          </ul>
+          <a class="cta" href="#">Continue with Team</a>
+        </div>
+        <div class="plan">
+          <h2>Enterprise</h2>
+          <div class="pricing">
+            <div class="price"><sup class="currency">$</sup>210</div>
+            <div class="rate">per user/year<br />for the first 12 months*</div>
+          </div>
+          <ul class="features">
+            <li>50,000 CI/CD minutes/month</li>
+            <li>50GB of Packages storage</li>
+          </ul>
+          <a class="cta" href="#">Continue with Enterprise</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

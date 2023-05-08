@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0 4px;
+}
+
+#app {
+  padding: 8px;
+}
+
+#search-form {
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+#search-results {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.result {
+  flex-basis: 25%;
+  flex-grow: 0;
+  display: flex;
+  padding: 8px;
+}
+
+.result-image {
+  flex-shrink: 0;
+  width: 96px;
+  height: 134px;
+  margin-right: 12px;
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.result-description {
+  flex-grow: 1;
+}

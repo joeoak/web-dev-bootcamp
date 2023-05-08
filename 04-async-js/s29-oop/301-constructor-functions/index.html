@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Creates a blank, plain JavaScript object.
+      // Adds a property to the new object (__proto__) that links to the constructor function's prototype object
+      // Binds the newly created object instance as the this context (i.e. all references to this in the constructor function now refer to the object created in the first step).
+      // Returns this if the function doesn't return an object.
+
+      function Color(r, g, b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+      }
+
+      Color.prototype.hex = function () {
+        const { r, g, b } = this;
+        return (
+          "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+        );
+      };
+
+      Color.prototype.rgb = function () {
+        const { r, g, b } = this;
+        return `rgba(${r}, ${g}, ${b})`;
+      };
+
+      Color.prototype.rgba = function (a = 1.0) {
+        const { r, g, b } = this;
+        return `rgba(${r}, ${g}, ${b}, ${a})`;
+      };
+
+      const firstColor = new Color(12, 34, 56);
+    </script>
+  </body>
+</html>

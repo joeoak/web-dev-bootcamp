@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   fetch("https://swapi.dev/api/people/1")
+      //     .then((res) => {
+      //       console.log("resolved", res);
+      //       return res.json(); // returns a promise which resolves with the result of parsing the body text as json
+      //     })
+      //     .then((data) => {
+      //       console.log(data);
+      //       return fetch("https://swapi.dev/api/people/2");
+      //     })
+      //     .then((res) => {
+      //       console.log("resolved", res);
+      //       return res.json();
+      //     })
+      //     .then((data) => {
+      //       console.log(data);
+      //     })
+      //     .catch((err) => {
+      //       console.log("error", err);
+      //     });
+
+      const getCharacters = async (id) => {
+        try {
+          const res = await fetch(`https://swapi.dev/api/people/${id}`);
+          const data = await res.json();
+          console.log(data);
+        } catch (err) {
+          console.log("error", err);
+        }
+      };
+
+      getCharacters(3);
+      getCharacters(4);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      input,
+      pre {
+        font-family: monospace;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      body {
+        padding: 0.5em;
+      }
+
+      #form {
+        display: flex;
+      }
+
+      #input {
+        background: none;
+        border: none;
+        margin-left: 0.6em;
+        outline: none;
+        width: 100%;
+      }
+
+      #submit {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <pre id="console">
+*** todo list ***
+</pre
+    >
+
+    <form id="form" autocomplete="off">
+      >
+      <input id="input" type="text" />
+      <input id="submit" type="submit" />
+    </form>
+
+    <script>
+      let tasks = [];
+
+      let element = {
+        form: document.querySelector('#form'),
+        input: document.querySelector('#input'),
+        console: document.querySelector('#console'),
+      };
+
+      form.addEventListener('submit', () => {
+        event.preventDefault();
+        app(element.input.value);
+        element.input.value = '';
+      });
+
+      function app(input) {
+        element.console.append(`> ${input}
+`);
+        // add
+        if (/^(add )/.test(input)) {
+          let regex = /(?<=^add )[^ *].*$/;
+          let match = input.match(regex);
+          let newTask;
+          if (match) newTask = match[0];
+          element.console.append(`adding ${newTask}
+`);
+          tasks.push(newTask);
+        }
+        // clear
+        else if (input === 'clear') {
+          element.console.innerHTML = '';
+        }
+        // commands
+        else if (input === 'commands') {
+          element.console.append(`- add <task name>: add new task
+- clear: clear console
+- commands: list commands
+- delete <task index>: delete task
+- list: list tasks
+`);
+        }
+        // delete
+        else if (/^(delete )/.test(input)) {
+          let regex = /(?<=^delete )[0-9]*$/;
+          let match = input.match(regex);
+          let taskIndex;
+          if (match) taskIndex = parseInt(match[0]) - 1;
+          if (
+            taskIndex >= 0 && // prettier-ignore
+            taskIndex < tasks.length
+          ) {
+            element.console.append(`deleting ${tasks[taskIndex]}
+`);
+            tasks.splice(taskIndex, 1);
+          } else {
+            element.console.append(`task not found
+`);
+          }
+        }
+        // list
+        else if (input === 'list') {
+          if (tasks.length) {
+            for (let i = 0; i < tasks.length; i++) {
+              element.console.append(`${i + 1}. ${tasks[i]}
+`);
+            }
+          } else {
+            element.console.append(`no tasks
+`);
+          }
+        }
+        // invalid command
+        else {
+          element.console.append(`invalid command
+type 'commands' to see the list of available commands
+`);
+        }
+      }
+    </script>
+  </body>
+</html>

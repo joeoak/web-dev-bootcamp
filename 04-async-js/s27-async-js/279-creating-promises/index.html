@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const changeBackgroundColor = (color, delay, callback) => {
+      //     setTimeout(() => {
+      //       document.body.style.transition = "background-color 200ms";
+      //       document.body.style.backgroundColor = color;
+      //       if (callback) callback();
+      //     }, delay);
+      //   };
+
+      //   changeBackgroundColor("red", 1000, () => {
+      //     changeBackgroundColor("white", 1000, () => {
+      //       changeBackgroundColor("blue", 1000, () => {
+      //         changeBackgroundColor("inherit", 1000);
+      //       });
+      //     });
+      //   });
+
+      const changeBackgroundColor = (color) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.body.style.transition = "background-color 200ms";
+            document.body.style.backgroundColor = color;
+            resolve();
+          }, 1000);
+        });
+      };
+
+      changeBackgroundColor("red")
+        .then(() => changeBackgroundColor("white"))
+        .then(() => changeBackgroundColor("blue"))
+        .then(() => changeBackgroundColor("inherit"));
+    </script>
+  </body>
+</html>

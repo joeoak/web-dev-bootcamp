@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .pokemon {
+        display: inline-flex;
+        flex-direction: column;
+      }
+
+      .pokemon > span {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pokemon Sprites</h1>
+    <div id="container"></div>
+
+    <script>
+      for (let i = 1; i <= 151; i++) {
+        const newDiv = document.createElement('div');
+        const newImg = document.createElement('img');
+        const newSpan = document.createElement('span');
+        newDiv.classList.add('pokemon');
+        newImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
+        newSpan.innerText = `#${i}`;
+        newDiv.appendChild(newImg);
+        newDiv.appendChild(newSpan);
+        document.querySelector('#container').append(newDiv);
+      }
+    </script>
+  </body>
+</html>

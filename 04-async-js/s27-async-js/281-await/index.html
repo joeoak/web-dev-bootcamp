@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+      "
+    >
+      <div
+        id="swatch"
+        style="width: 256px; height: 256px; transition: background-color 1000ms"
+      ></div>
+    </div>
+
+    <script>
+      // await is often used inside of async functions
+      // await will pause the execution of a function and wait for a promise to resolve
+
+      const elements = {
+        swatch: document.querySelector("#swatch"),
+      };
+
+      const changeBackgroundColor = (color) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            elements.swatch.style.backgroundColor = color;
+            resolve();
+          }, 1000);
+        });
+      };
+
+      const rainbow = async () => {
+        await changeBackgroundColor("red");
+        await changeBackgroundColor("orange");
+        await changeBackgroundColor("yellow");
+        await changeBackgroundColor("green");
+        await changeBackgroundColor("blue");
+        await changeBackgroundColor("indigo");
+        await changeBackgroundColor("violet");
+        return "End of rainbow";
+      };
+
+      const awaitRainbow = async () => {
+        await rainbow();
+        return "End of awaitRainbow";
+      };
+
+      awaitRainbow().then((msg) => {
+        console.log(msg);
+      });
+    </script>
+  </body>
+</html>
