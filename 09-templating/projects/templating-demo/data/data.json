@@ -1,0 +1,59 @@
+{
+  "hamburger": {
+    "title": "r/hamburger",
+    "description": "A hamburger is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.",
+    "emoji": "🍔",
+    "posts": [
+      {
+        "title": "Hamburgers are delicious",
+        "author": "Jane Doe"
+      },
+      {
+        "title": "I love hamburgers",
+        "author": "John Doe"
+      },
+      {
+        "title": "What's your favorite hamburger?",
+        "author": "Jane Doe"
+      }
+    ]
+  },
+  "hotdog": {
+    "title": "r/hotdog",
+    "description": "A hotdog (also spelled hot dog) is a cooked sausage, traditionally grilled or steamed and served in a sliced bun as a sandwich.",
+    "emoji": "🌭",
+    "posts": [
+      {
+        "title": "Hotdogs are delicious",
+        "author": "Jane Doe"
+      },
+      {
+        "title": "I love hotdogs",
+        "author": "John Doe"
+      },
+      {
+        "title": "What's your favorite hotdog?",
+        "author": "Jane Doe"
+      }
+    ]
+  },
+  "pizza": {
+    "title": "r/pizza",
+    "description": "Pizza is a flatbread generally topped with tomato sauce and cheese and baked in an oven. It is commonly topped with a selection of meats, vegetables and condiments.",
+    "emoji": "🍕",
+    "posts": [
+      {
+        "title": "Pizza is delicious",
+        "author": "Jane Doe"
+      },
+      {
+        "title": "I love pizza",
+        "author": "John Doe"
+      },
+      {
+        "title": "What's your favorite pizza?",
+        "author": "Jane Doe"
+      }
+    ]
+  }
+}
