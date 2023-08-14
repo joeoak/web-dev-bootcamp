@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New comment</title>
+  </head>
+  <body>
+    <h1>New comment</h1>
+    <form action="/comments" method="post" style="display: flex; align-items: flex-start; flex-direction: column; width: 256px">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" />
+      <label for="comment">Comment:</label>
+      <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+      <input type="submit"/>
+    </form>
+    <a href="/comments">Back to all comments</a>
+  </body>
+</html>

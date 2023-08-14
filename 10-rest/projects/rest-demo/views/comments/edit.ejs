@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit comment</title>
+  </head>
+  <body>
+    <h1>Edit comment</h1>
+    <!-- method is set to POST, but methodOverride interprets this as a PATCH request -->
+    <form action="/comments/<%= comment.id %>?_method=PATCH" method="POST" style="display: flex; align-items: flex-start; flex-direction: column; width: 256px">
+      <label for="comment">Comment:</label>
+      <textarea name="comment" id="comment" cols="30" rows="10"><%= comment.comment %></textarea>
+      <input type="submit" />
+    </form>
+    <form action="/comments/<%= comment.id %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete" />
+    </form>
+    <a href="/comments">Back to all comments</a>
+  </body>
+</html>
